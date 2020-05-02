@@ -6,7 +6,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.exceptions import NotFittedError
 
 def preProcess(message):
-        string = String(message)
+        string = str(message)
         return string.translate(str.maketrans('', '', '\n'))
 class ToxicDetector:
     def __init__(self):
