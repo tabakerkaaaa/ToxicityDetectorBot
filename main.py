@@ -3,7 +3,6 @@ import SentimentAnalysis as SA
 bot = telebot.TeleBot('898935402:AAHEH4yQmodbyw_Tz1wQBYWya7X6cbOfYQc')
 ToxicDetector = SA.ToxicDetector()
 ToxicDetector.fitPipeline()
-bot.polling()
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -16,3 +15,4 @@ def send_response(message):
     if toxicityLevel != -1 and toxicityLevel > 0.5:
         response = "Ты че блять, " + message.from_user.username + "? Дружелюбнее сука будь."
         bot.send_message(message.chat.id, response, reply_to_message_id=message.message_id)
+bot.polling()
