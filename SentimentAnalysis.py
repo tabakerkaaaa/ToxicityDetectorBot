@@ -6,7 +6,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.exceptions import NotFittedError
 
 def preProcess(message):
-        return message.translate(str.maketrans('', '', '\n'))
+        string = String(message)
+        return string.translate(str.maketrans('', '', '\n'))
 class ToxicDetector:
     def __init__(self):
         self.toxic_data = pd.read_csv('labeled.csv.zip', compression='zip', names=['comment', 'toxic'], sep='\t', delimiter=',')[1:].to_numpy()
