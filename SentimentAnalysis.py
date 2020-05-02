@@ -12,7 +12,7 @@ class ToxicDetector:
     def __init__(self):
         self.toxic_data = pd.read_csv('labeled.csv.zip', compression='zip', names=['comment', 'toxic'], sep='\t', delimiter=',')[1:].to_numpy()
         self.pipeline = Pipeline([
-            ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess)),
+            ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess, ngram_range=(1,3))),
             ('tfidf', TfidfTransformer()),
             ('clf', LogisticRegressionCV(penalty='l2', cv=15, max_iter=1000, verbose=1, n_jobs=5)),
         ])
