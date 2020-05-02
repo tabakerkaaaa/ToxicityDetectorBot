@@ -6,7 +6,7 @@ ToxicDetector.fitPipeline()
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message.chat.id, "Привет, пидорасы, отныне я буду контролировать токсичность в этом чятике")
+    bot.send_message(message.chat.id, "Привет, пидорасы, отныне я буду контролировать токсичность в этом чятике")
 
 @bot.message_handler(content_types=['text'])
 def send_response(message):
