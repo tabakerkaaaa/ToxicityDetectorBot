@@ -12,7 +12,7 @@ def send_welcome(message):
 def send_response(message):
     toxicityLevel = ToxicDetector.resultedToxicity(message.text)
     print(message.text, ": ", toxicityLevel)
-    if toxicityLevel != -1 and toxicityLevel > 0.5:
+    if toxicityLevel != -1 and toxicityLevel > 0.8:
         response = "Ты че блять, " + message.from_user.username + "? Дружелюбнее сука будь."
         bot.send_message(message.chat.id, response, reply_to_message_id=message.message_id)
 bot.polling()
