@@ -14,7 +14,7 @@ class ToxicDetector:
         self.pipeline = Pipeline([
             ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess, ngram_range=(1,2))),
             ('tfidf', TfidfTransformer()),
-            ('clf', LogisticRegressionCV(penalty='l2', cv=15, max_iter=500, verbose=1, n_jobs=3)),
+            ('clf', LogisticRegressionCV(penalty='l2', cv=7, max_iter=500, verbose=1)),
         ])
     def fitPipeline(self):
         X = self.toxic_data[:, 0]
