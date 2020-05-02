@@ -1,6 +1,6 @@
 import telebot
 import SentimentAnalysis as SA
-bot = telebot.TeleBot('898935402:AAHEH4yQmodbyw_Tz1wQBYWya7X6cbOfYQc')
+bot = telebot.TeleBot('898935402:AAEUV054hw-kyxD7rO0WmVk_nfTwGfH0tro')
 ToxicDetector = SA.ToxicDetector()
 ToxicDetector.fitPipeline()
 
