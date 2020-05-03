@@ -15,7 +15,7 @@ class ToxicDetector:
         stopwords = frozenset(map(preProcess, raw_lines))
         print(stopwords)
         self.pipeline = Pipeline([
-            ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess, ngram_range=(1,3), stop_words=stopwords)),
+            ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess, ngram_range=(1,2), stop_words=stopwords)),
             ('tfidf', TfidfTransformer()),
             ('clf', LogisticRegressionCV(penalty='l1', cv=10, max_iter=100, verbose=1, solver='liblinear')),
         ])
