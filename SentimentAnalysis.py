@@ -12,7 +12,7 @@ class ToxicDetector:
     def __init__(self):
         self.toxic_data = pd.read_csv('labeled.csv.zip', compression='zip', names=['comment', 'toxic'], sep='\t', delimiter=',')[1:].to_numpy()
         raw_lines = open("russian_stop_words.txt").readlines()
-        stopwords = frozenset(next(zip(*raw_lines)))
+        stopwords = frozenset(map(preProcess, raw_lines))
         print(stopwords)
         self.pipeline = Pipeline([
             ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess, ngram_range=(1,3), stop_words=stopwords)),
