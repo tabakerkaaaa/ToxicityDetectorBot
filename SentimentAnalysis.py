@@ -11,7 +11,8 @@ def preProcess(message):
 class ToxicDetector:
     def __init__(self):
         self.toxic_data = pd.read_csv('labeled.csv.zip', compression='zip', names=['comment', 'toxic'], sep='\t', delimiter=',')[1:].to_numpy()
-        stopwords = pd.read_csv('russian_stop_words.txt')
+        stop_words_file = open("russian_stop_words.txt", 'r')
+        stopwords = [line.split('\n') for line in stop_words_file.readlines()]
         self.pipeline = Pipeline([
             ('vec', CountVectorizer(lowercase=False, preprocessor=preProcess, ngram_range=(1,2), stop_words=stopwords)),
             ('tfidf', TfidfTransformer()),
